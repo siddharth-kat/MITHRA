@@ -1,0 +1,43 @@
+{% extends 'basic.html' %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+
+<html>
+<head>
+  <style>
+    .study {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      width: 30%;
+      padding: 20px;
+      margin: 0 auto;
+      border-radius: 20px;
+      top: 500px;
+    }
+    #CSE, #IT, #CSD, #CSM {
+      margin: 10px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="stu">
+  <div class="study">
+  <h1>Study Material</h1>
+  <a href="https://drive.google.com/drive/folders/1nEye-Qy3zd8MdF3ufNWw6r9AM0qsMHKo" target="_blank" class="CSE"><button class="btn btn-primary" id="CSE">CSE</button></a>
+  <a href="https://drive.google.com/drive/folders/1nEye-Qy3zd8MdF3ufNWw6r9AM0qsMHKo" target="_blank" class="CSE"><button class="btn btn-primary" id="IT">IT</button></a>
+  <a href="https://drive.google.com/drive/folders/1nEye-Qy3zd8MdF3ufNWw6r9AM0qsMHKo" target="_blank" class="CSE"><button class="btn btn-primary" id="CSD">CSD</button></a>
+  <a href="https://drive.google.com/drive/folders/1nEye-Qy3zd8MdF3ufNWw6r9AM0qsMHKo" target="_blank" class="CSE"><button class="btn btn-primary" id="CSM">CSM</button></a>
+</div>
+</div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+</body>
+</html>
+
+{% endblock content %}

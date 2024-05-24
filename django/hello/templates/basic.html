@@ -1,0 +1,267 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock title %} MITHRA</title>
+    <link rel="website icon" type="jpg" src= " {% static "kmit.jpg"  %}" > 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    
+    <link
+      href="npm i bootstrap-icons"
+      rel="stylesheet"
+/>
+  </head>
+  <header> 
+    <br>
+  <div class='sec'>
+    
+      <img src= " {% static "kmit.jpg"  %}" >
+      <h3>Mithra</h3>
+    
+      
+      <div class="btn-group">
+        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          {{dat.firstname}}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><button class="dropdown-item" type="button"> <a class="nav-link" href="/data">View Profile</a></button></li>
+          <li><button class="dropdown-item" type="button"><a class="nav-link" href="changepassword/">Change Password</a> </button> </li>
+          <li><button class="dropdown-item" type="button"><a class="nav-link" href="/logout">Logout</a> </button> </li>
+       
+        </ul>
+      </div>
+  </div>
+         
+  </header>
+  <body >
+    <section class="header">
+      
+        <nav class="navbar navbar-expand-lg ">
+          <div class="container-fluid">
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/attendance">Attendance</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/results">Results</a>
+                </li>
+               
+                <li class="nav-item">
+                  <a class="nav-link" href="/tt">Time Table</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="/contact">Feedback</a>
+                </li>
+              </ul>
+             
+                
+                </ul>
+              </div>
+             
+      
+  </section>
+    
+        </header>
+        
+
+    
+
+
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {%block content%}
+
+    <a href="/logout"></a>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <div class='cards'>
+    <div class='first'>
+    <div class="card" onclick="handleCardClick(1)">
+      <p>Attendance</p> 
+  </div>
+  <div class="card" onclick="handleCardClick(2)">
+      <p>Results</p>
+  </div>
+  <div class="card" onclick="handleCardClick(3)">
+      <p>Feedback</p>
+  </div>
+
+</div>
+
+<div class='first'>
+  <div class="card" onclick="handleCardClick(4)">
+    <p>Study Material</p>
+</div>
+<div class="card" onclick="handleCardClick(5)">
+  <p>Time Table</p>
+</div>
+  <div class="card" onclick="handleCardClick(6)">
+    <p>To Do's</p>
+</div>
+</div>
+</div>
+  <script>
+      function handleCardClick(cardNumber) {
+        // Replace 'cardNumber' with the appropriate actions you want to take for each card.
+        switch (cardNumber) {
+            case 1:
+                window.location="/attendance"
+                break;
+            case 2:
+                window.location="/results"
+
+                break;
+            case 3:
+                window.location="/contact"
+                
+                break;
+            case 4:
+                window.location="rules/"
+                
+                break;
+            case 5:
+                window.location="tt/"
+
+                break;
+              case 6:
+                window.location="todo/"
+
+                break;
+            default:
+                break;
+        }
+    }
+
+  </script>
+  {% endblock content %}
+  
+    
+      <footer>
+        <div>
+          <span id='@c'>© Mithra, A project by Akshay , Jashwanth , Shiva , Siddharth</span>
+        </div>
+      </footer>
+    
+  
+  
+  <style>
+    body{
+    background: radial-gradient(circle at 7.4% 45.1%, rgb(236, 206, 251) 0%, rgb(205, 237, 246) 45.1%, rgb(227, 251, 252) 78.4%, rgb(230, 247, 235) 90%);
+    }
+    .nav-link::after{
+      content: '';
+      display: block;
+      height:2px;
+      width: 100%;
+      background-color:grey;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      border-radius: 5px;
+    }
+    .nav-link:hover::after{
+      transform: scaleX(1);
+    }
+    .nav-link:hover{
+      font-size:20px;
+      color:black;
+    }
+  .card {
+    margin:10px;
+      width: 400px;
+      height: 100px;
+      background-color: #E0FFFF;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background-color 0.2s;
+  }
+  .cards {
+margin-left:10%;
+margin-right:10%;
+  }
+  
+  .card p {
+      margin: 0;
+  }
+  
+  .card:hover {
+      background-color: #AFDBF5;
+  }
+  .first {
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+}
+.allign {
+  display: flex;
+  justify-content: center;
+  gap: 20px; 
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.header{
+  width:80%;
+  margin-left:10%;
+}
+.sec{
+  display:flex;
+  justify-content:space-between;
+  margin-left:10%;
+  margin-right:10%;
+  align-items:self;
+}
+img{
+  height:4%;
+  width:4%;
+}
+
+footer {
+  display:flex;
+  justify-content:center;
+  position: fixed;
+  bottom: 2%;
+  width: 100%;
+  height: 10px; 
+}
+
+  </style>
+  </body>
+</html>

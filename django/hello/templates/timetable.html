@@ -1,0 +1,129 @@
+{% extends 'basic.html' %}
+{% block title %}Time Table
+{% endblock title %}
+{% block content %}
+
+<body>
+  <div class="header1">
+    <h1>Weekly Timetable</h1>
+  </div>
+  <div class="timetable-container">
+    <br>
+    <br>
+    <table class="timetable">
+      <tr>
+        <th>DAY/TIME</th>
+        <th>10:00 - 10:50</th>
+        <th>10:50 - 11:40</th>
+        <th>11:40 - 12:30</th>
+        <th>1:30 - 2:20</th>
+        <th>2:20 - 3:10</th>
+        <th>3:10 - 4:00</th>
+      </tr>
+      <tr>
+ 
+    
+        <td class="hi">Monday </td>
+        {% for item in  tt.Monday %}
+        <td class="class">{{item}}</td>
+        {%endfor%}
+      </tr>
+      <tr>
+        <td class="hi">Tuesday </td>
+        {% for item in  tt.Tuesday %}
+        <td class="class">{{item}}</td>
+        {%endfor%}
+        
+      </tr>
+      <tr>
+        <td class="hi">Wednesday</td>
+        {% for item in  tt.Wednesday %}
+        <td class="class">{{item}}</td>
+        {%endfor%}
+        
+      </tr>
+      <tr>
+        <td class="hi">Thursday</td>
+        {% for item in  tt.Thursday %}
+        <td class="class">{{item}}</td>
+        {%endfor%}
+        
+      </tr>
+      <tr>
+        <td class="hi">Friday</td>
+        {% for item in  tt.Friday %}
+        <td class="class">{{item}}</td>
+        {%endfor%}
+      </tr>
+      <tr>
+        <td class="hi">Friday</td>
+        {% for item in  tt.Saturday %}
+        <td class="class">{{item}}</td>
+        {%endfor%}
+        
+      </tr>
+    
+      <!-- Add more rows for other time slots -->
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+  </div>
+  <script >
+
+  </script>
+  <style >
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color:#F8F9F9;
+      }
+      
+      .header1 {
+        background-color: yellow;
+        padding: 20px;
+        text-align: center;
+        color: black;
+      }
+      
+      .timetable-container {
+        padding: 20px;
+      }
+      
+      .timetable {
+        width: 100%;
+        border-collapse: collapse;
+        margin: auto;
+        
+      }
+      .hi{
+        background-color: yellow;
+        color: black;
+      }
+      .timetable th, .timetable td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+      }
+      
+      .timetable th {
+        background-color: yellow;
+        color: black;
+      }
+      
+      .class {
+        background-color: #FFFDD0;
+        color: black;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      .class:hover {
+        background-color: #FFF8DC;
+      }
+      
+  </style>
+</body>
+
+
+{% endblock content %}

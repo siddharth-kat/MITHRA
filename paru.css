@@ -1,0 +1,146 @@
+#att{
+    border: 1px solid red;
+    position: relative;
+    bottom:10px;
+    right: 10px;
+}
+
+#per{
+    border: 1px solid rgb(25, 24, 24);
+    position: relative;
+    bottom:10px;
+    
+}
+#not{
+    border: 1px solid red;
+    position: relative;
+    bottom:10px;
+    right: 10px;
+    left: 10px;
+}
+#so{
+    border: 1px solid rgb(25, 24, 24);
+    position: relative;
+    bottom:10px;
+    left: 20px;
+    
+}
+#dis{
+    border: 1px solid red;
+    position: relative;
+    
+    right: 10px;
+}
+#eve{
+    border: 1px solid rgb(25, 24, 24);
+    position: relative;
+    
+    
+}
+#re{
+    border: 1px solid red;
+    position: relative;
+    
+    right: 10px;
+    left: 10px;
+}
+#co{
+    border: 1px solid rgb(25, 24, 24);
+    position: relative;
+    
+    left: 20px;
+    
+}
+#bold{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:rgb(25, 24, 24);
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+#bold1{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:brown;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+#bold2{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:rgb(22, 22, 22);
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#bold3{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:brown;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+#bold4{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:rgb(13, 13, 13);
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+#bold5{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:brown;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+#bold6{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:rgb(23, 22, 22);
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+#bold7{
+    position: relative;
+    top: 30px;
+    left: 50px;
+    color:brown;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+}
+#att:hover {
+    box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+#per:hover {
+        box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+#not:hover {
+        box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+
+#so:hover {
+        box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+
+#dis:hover {
+        box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+
+#eve:hover {
+        box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+#re:hover {
+        box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+#co:hover {
+        box-shadow:  0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+  

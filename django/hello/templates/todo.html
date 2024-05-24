@@ -1,0 +1,120 @@
+{% extends 'basic.html' %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODOs List</title>
+    <!-- Your CSS and Bootstrap links go here -->
+</head>
+<body>
+    <div class="container my-4">
+        <h2 class="text-center">TODOs List</h2>
+      
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Add an item to the list</small>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <button id="add" class="btn btn-primary">Add to list</button>
+        <button id="clear" class="btn btn-primary" onclick="clearStorage()">Clear list</button>
+        <div id="items" class="my-4">
+            <h2>Your Items</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Item Title</th>
+                        <th scope="col">Item Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+<script>
+    function getAndUpdate() {
+        console.log("Updating List...");
+
+        // Get the username and data
+        const username = {{user.username}};
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+
+        if (localStorage.getItem(username) == null) {
+            // If user data doesn't exist, create a new array for this user
+            localStorage.setItem(username, JSON.stringify([{ title, description }]));
+        } else {
+            // Retrieve the user's existing data and add the new item to it
+            const userItems = JSON.parse(localStorage.getItem(username));
+            userItems.push({ title, description });
+            localStorage.setItem(username, JSON.stringify(userItems));
+        }
+        update();
+    }
+
+    function update() {
+        // Get the username
+        const username =  {{user.username}};
+
+        if (localStorage.getItem(username) == null) {
+            // If user data doesn't exist, create an empty array for this user
+            localStorage.setItem(username, JSON.stringify([]));
+        }
+
+        // Retrieve the user's data and populate the table
+        const userItems = JSON.parse(localStorage.getItem(username));
+        let tableBody = document.getElementById("tableBody");
+        let str = "";
+        userItems.forEach((element, index) => {
+            str += `
+                <tr>
+                    <th scope="row">${index + 1}</th>
+                    <td>${element.title}</td>
+                    <td>${element.description}</td>
+                    <td><button class="btn btn-sm btn-primary" onclick="deleted('${username}', ${index})">Delete</button></td>
+                </tr>`;
+        });
+        tableBody.innerHTML = str;
+    }
+
+    function deleted(username, itemIndex) {
+        console.log("Delete", itemIndex);
+        const userItems = JSON.parse(localStorage.getItem(username));
+        // Delete itemIndex element from the array
+        userItems.splice(itemIndex, 1);
+        localStorage.setItem(username, JSON.stringify(userItems));
+        update();
+    }
+
+    function clearStorage() {
+        const username =  {{user.username}};;
+        if (confirm("Do you really want to clear?")) {
+            console.log('Clearing the storage')
+            localStorage.removeItem(username);
+            update()
+        }
+    }
+
+    // Attach event listeners and initial update
+    add = document.getElementById("add");
+    add.addEventListener("click", getAndUpdate);
+    update();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+</body>
+
+
+{% endblock content %}

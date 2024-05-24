@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/akshay.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+    
+</head> 
+<body >
+    <main>
+        <div class="kmit">
+            <img src="https://kmitastra.vercel.app/logo.png" style="height: 50px;" alt="akshay">
+        <h2>
+            KMIT M<i>IT</i>HR<i>A</i> 
+        </h2>
+        
+        </div>
+    </main>
+  <!-- <form id="attendanceForm">
+    <label for="hallTicketInput">Roll Number:</label>
+    <div class="input-group mb-3", id="jas" style="margin: 5px;">
+       
+      <input type="text" class="form-control" id="hallTicketInput" placeholder="0" aria-label="Username" aria-describedby="basic-addon1" required>
+    </div>
+    <button  type="button" class="btn btn-primary" style="margin: 5px;">Fetch</button>
+  </form>
+    <button  type="button" class="btn btn-primary" style="margin: 5px;">Remember me</button>
+    <button  type="button" class="btn btn-primary" style="margin: 5px;">Feedback</button>
+
+  </div>
+  </div> -->
+ 
+    <!-- <h5><p style="margin: 10px;">Roll number</p></h5> -->
+  <form id="attendanceForm">
+    <label for="hallTicketInput">Roll No:</label>
+    <div class="input-group mb-3", id="jas" style="margin: 5px;">
+      <input type="text" class="form-control" id="hallTicketInput" placeholder="0"   required>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin: 5px;">Fetch</button>
+  </form>
+   
+    <!-- <button onclick="myFunction() " type="button" class="btn btn-primary" style="margin: 5px;">Remember me</button>
+
+    
+    <button onclick="myFunction() " type="button" class="btn btn-primary" style="margin: 5px;">Feedback</button> -->
+ 
+  <div id="attendanceOutput"></div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const attendanceForm = document.getElementById("attendanceForm");
+    const hallTicketInput = document.getElementById("hallTicketInput");
+    const attendanceOutput = document.getElementById("attendanceOutput");
+
+    attendanceForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const x = parseInt(hallTicketInput.value);
+      const url = "http://teleuniv.in/netra/api.php";
+
+      const data = JSON.stringify({ method: "314", rollno: x });
+      axios.post(url, data)
+        .then(response => {
+          const dictionary = response.data;
+          const d = {};
+          for (let i = 0; i < dictionary.overallattperformance.overall.length; i++) {
+            if (dictionary.overallattperformance.overall[i].percentage !== '--') {
+              d[dictionary.overallattperformance.overall[i].subjectname] = dictionary.overallattperformance.overall[i].percentage;
+            } else {
+              d[dictionary.overallattperformance.overall[i].subjectname] = dictionary.overallattperformance.overall[i].practical;
+            }
+          }
+          let i = 1;
+          let s1 = 0;
+          let s2=0;
+          const sem1 = [];
+          const sem2 = [];
+          for (const [it, val] of Object.entries(d)) {
+            if (i <= 10) {
+              s1 += parseInt(val);
+              sem1.push(`${it} --> ${val} %`);
+            } else {
+              s2 += parseInt(val);
+              sem2.push(`${it} --> ${val} %`);
+            }
+            i++;
+          }
+
+          // Clear previous output
+          attendanceOutput.innerHTML = "";
+
+          // Display Sem 1 attendance
+          const sem1Heading = document.createElement("h2");
+          sem1Heading.textContent = "Sem 1 attendance:";
+          attendanceOutput.appendChild(sem1Heading);
+          for (const item of sem1) {
+            const p = document.createElement("p");
+            p.textContent = item;
+            attendanceOutput.appendChild(p);
+          }
+          const sem1Total = document.createElement("p");
+          sem1Total.textContent = `Total: ${s1/10}`;
+          attendanceOutput.appendChild(sem1Total);
+
+          // Display Sem 2 attendance
+          const sem2Heading = document.createElement("h2");
+          sem2Heading.textContent = "Sem 2 attendance:";
+          attendanceOutput.appendChild(sem2Heading);
+          for (const item of sem2) {
+            const p = document.createElement("p");
+            p.textContent = item;
+            attendanceOutput.appendChild(p);
+          }
+          const sem2Total = document.createElement("p");
+          sem2Total.textContent = `Total: ${s2/10}`;
+          attendanceOutput.appendChild(sem2Total);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    });
+  </script>
+
+
+</body>
+</html>
